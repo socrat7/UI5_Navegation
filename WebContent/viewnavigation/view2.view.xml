@@ -1,9 +1,9 @@
 <core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
 		controllerName="viewnavigation.view2" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page title="View Two" showNavButton="true" navButtonPress="onNavigation">
+	<Page title="Contact" showNavButton="true" navButtonPress="onNavigation">
 		<content>
 		
-		<Text text="You have been navigated to view two, press back button to visit view one"/>
+		<Text text="You have been navigated to view two - Contact, press back button to visit view one"/>
 		
 	
 		</content>

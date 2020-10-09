@@ -20,6 +20,63 @@
 				//app.addPage(page); antes de implementar la navegación
 				app.addPage(page).addPage(page1);// agregamos .addPage(page1) para la navegacion
 				app.placeAt("content");
+				
+				//declaramos variables para el routing
+				var myroutes = [ 
+					
+					  {
+						pattern: "",
+						name: "view1",
+						view: "viewnavigation.view1",
+						viewType: sap.ui.core.mvc.ViewType.XML,
+						targetControl: "appId",
+						clearTarget: true,
+						callback: function(){
+							myCallback(this);
+							}
+						},
+						
+						{
+							pattern: ["contact", "view2"],
+							name: "view2",
+							view: "viewnavigation.view2",
+							viewType: sap.ui.core.mvc.ViewType.XML,
+							targetControl: "appId",
+							clearTarget: true,
+							callback: function(){
+								myCallback(this);
+								}
+						 }					
+				];
+				
+				var myCallback  = function($this){
+					var viewId = "id" + $this.name;
+					var view = sap.ui.getCore().byId(viewId);
+					
+					if (view == undefined){
+						view = sap.ui.view({
+							id: viewId,
+							viewName: $this.view,
+							type: $this.viewType
+						});
+						
+						app.addPage(view);
+						
+					}
+					
+					app.to(viewId);
+					
+				};
+				
+				
+				//creamos nuestro router
+				var router = new sap.ui.core.routing.Router(myroutes);
+				router.register("appRouter");
+				router.initialize();
+				
+				
+				
+				
 		</script>
 
 	</head>

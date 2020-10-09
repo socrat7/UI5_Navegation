@@ -38,8 +38,14 @@ sap.ui.controller("viewnavigation.view1", {
 	//creamos el evento al presionar el boton del view1 xml
 	onPress: function() {
 
-		app = sap.ui.getCore().byId("appId");
-		app.to("idview2");
+	//	app = sap.ui.getCore().byId("appId");
+	//	app.to("idview2");
+		
+		//iniciamos el router ->cambia el view pero sigue mostrando index.html
+		var oRouter = sap.ui.core.routing.Router.getRouter("appRouter");
+		var oHashChanger = new sap.ui.core.routing.HashChanger();
+		oHashChanger.setHash(oRouter.getURL("view2"));
+		
 		
 	}
 
